@@ -1,0 +1,348 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.18), transparent 25%),
+    linear-gradient(135deg, #0b1120, #111827, #172554);
+  color: #ffffff;
+}
+
+/* remove unwanted vertical lines / pseudo elements */
+body::before,
+body::after,
+.admin-page::before,
+.admin-page::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* remove list dots */
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+.admin-page {
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.admin-page-header {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: fadeDown 0.7s ease;
+}
+
+.admin-page-title {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.4px;
+}
+
+.admin-page-subtitle {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.admin-page-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 38px;
+  animation: fadeUp 0.8s ease;
+}
+
+.admin-main-btn,
+.admin-secondary-btn,
+.admin-action-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 13px 22px;
+  font-size: 0.96rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.admin-main-btn {
+  color: #ffffff;
+  background: linear-gradient(135deg, #3b82f6, #7c3aed);
+  box-shadow:
+    0 14px 28px rgba(76, 29, 149, 0.34),
+    0 0 22px rgba(59, 130, 246, 0.18);
+}
+
+.admin-main-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.admin-secondary-btn {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.admin-secondary-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.admin-project-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.admin-project-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 380px;
+  padding: 24px 22px 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.7s ease;
+}
+
+.admin-project-item:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.admin-project-card-wrap {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+/* safe styling for content inside ProjectCard */
+.admin-project-card-wrap * {
+  max-width: 100%;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.admin-project-card-wrap h1,
+.admin-project-card-wrap h2,
+.admin-project-card-wrap h3 {
+  margin: 0 0 14px;
+  text-align: center;
+  color: #ffffff;
+  line-height: 1.15;
+  font-size: clamp(1.9rem, 2.8vw, 3.2rem);
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.admin-project-card-wrap p {
+  margin: 0 auto 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  max-width: 95%;
+  min-height: calc(1.6em * 3);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-project-card-wrap ul,
+.admin-project-card-wrap ol,
+.admin-project-card-wrap li {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-project-card-wrap a {
+  display: block;
+  width: fit-content;
+  margin: 6px auto 0;
+  color: #c4b5fd;
+  font-size: 1rem;
+  text-decoration: underline;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-project-card-wrap a:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.admin-project-card-wrap img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+/* if ProjectCard root is a div/li/article, this helps center content */
+.admin-project-card-wrap > div,
+.admin-project-card-wrap > li,
+.admin-project-card-wrap > article {
+  width: 100%;
+  border: none !important;
+}
+
+.admin-project-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.admin-action-btn {
+  min-width: 130px;
+  padding: 14px 22px;
+  font-size: 1rem;
+  border-radius: 16px;
+}
+
+.admin-edit-btn {
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.26);
+}
+
+.admin-edit-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+}
+
+.admin-delete-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(220, 38, 38, 0.26);
+}
+
+.admin-delete-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+}
+
+.admin-page-state {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .admin-project-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 28px 16px 40px;
+  }
+
+  .admin-page-title {
+    font-size: 2.1rem;
+  }
+
+  .admin-project-item {
+    min-height: 340px;
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+
+  .admin-project-card-wrap h1,
+  .admin-project-card-wrap h2,
+  .admin-project-card-wrap h3 {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-project-list {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-project-buttons {
+    flex-direction: column;
+  }
+
+  .admin-action-btn,
+  .admin-main-btn,
+  .admin-secondary-btn {
+    width: 100%;
+  }
+}
