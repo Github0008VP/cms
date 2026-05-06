@@ -24,7 +24,7 @@ const ProtectedRoute = ({ children }) => {
 
     if (isAuth === null) return <p>Checking...</p>
 
-    if (!isAuth) return <Navigate to="/" />
+    if (!isAuth) return <Navigate to="/admin/login" />
 
     return children
 }
