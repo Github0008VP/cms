@@ -1,16 +1,18 @@
 import React from 'react'
+import '../css/adminCss/message.css'
+
 
 const MessageCard = ({contact}) => {
-  return (
-    <>
 
-    <h3>{contact.name}</h3>
-    <p>{contact.message}</p>
+return (
+        <div className="message-card">
+            <div className="message-user">{contact.name}</div>
+            <div className="message-text">{contact.message}</div>
+        </div>
+    )
 
 
-    
-    </>
-  )
+   
 }
 
 export default MessageCard
