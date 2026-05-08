@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard'
 import '../../css/userCss/project.css'
 import Contact from './Contact'
 import About from './About'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Project = () => {
 
@@ -17,7 +18,7 @@ const Project = () => {
         const fetch = async() => {
 
             try{
-                const res = await axios.get('http://localhost:5000/api/user/projects')
+                const res = await axios.get(`${API}/api/user/projects`)
                 console.log(res)
                 setData(res.data.projects)
             }
