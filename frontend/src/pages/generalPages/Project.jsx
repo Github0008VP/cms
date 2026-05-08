@@ -7,6 +7,7 @@ import Contact from './Contact'
 import About from './About'
 const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
+
 const Project = () => {
 
     const [data, setData] = useState([])

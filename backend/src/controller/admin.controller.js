@@ -31,17 +31,17 @@ const login = async (req, res) => {
         process.env.JWT_SECRET,
         {expiresIn: '1d'}
     );
-
+// cookies doesnot work if backend and frontend is on different domains
   res.cookie("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-    maxAge: 24 * 60 * 60 * 1000
+    secure: true,
+    sameSite: "none",
+    path: "/"
 });
     
-    res.status(200).json({
+     res.status(200).json({
         success: true,
-        message: "Login successful"
+        message: "Login successful",
     })
 
     }
