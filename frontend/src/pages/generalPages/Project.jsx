@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard'
 import '../../css/userCss/project.css'
 import Contact from './Contact'
 import About from './About'
+import Navbar from './Navbar'
 const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 
@@ -59,6 +60,7 @@ const Project = () => {
 
 
         <>
+        < Navbar />
         < About />
               <>
             <div className="project-page">
