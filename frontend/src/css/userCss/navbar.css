@@ -33,6 +33,7 @@
 
 .admin-cta__button:hover {
   background: #1e1e1e;
+  color: rgb(235, 233, 233);
   transform: translateY(-1px);
 }
 

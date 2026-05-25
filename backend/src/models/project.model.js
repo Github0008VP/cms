@@ -13,7 +13,7 @@ const projectSchema = new mongoose.Schema(
     },
 
     techStack: {
-      type: [String],
+      type: String,   // changed [String] to String, sending [array] difficult
       required: true,
     },
 

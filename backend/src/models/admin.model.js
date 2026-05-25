@@ -17,7 +17,14 @@ const adminSchema = new mongoose.Schema(
         password: {
             type: String,
             required: true,
-            // select: false  will not returned in queries until .select(+password)
+            select: false // will not returned in queries until .select(+password)
+        },
+        
+        // adding role to create multiple level admin
+        role: {
+            type: String,
+            enum: ["superAdmin", "admin"],
+            default: "admin"
         }
     }
 

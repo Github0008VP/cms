@@ -1,5 +1,6 @@
 
 const jwt = require('jsonwebtoken')
+const Admin = require('../models/admin.model.js')
 
 const adminMiddleware = async (req, res,next) => {
 
@@ -12,11 +13,22 @@ const adminMiddleware = async (req, res,next) => {
     
         const verify = jwt.verify(token, process.env.JWT_SECRET)
         req.admin = verify.id
+
+        // updating code to pass role of admin too
+        const adminDocument = await Admin.findById(verify.id)
+
+        if (!adminDocument) {
+          return res.status(404).json({ message: 'Admin not found' });
+    }
+        req.adminRole = adminDocument.role
+
+
+
         next();
 
     }
     catch(err) {
-        res.status(401).json({message: "Unauthorized Access!!"})
+        return res.status(401).json({message: "Unauthorized Access!!"})
     }
 }
 

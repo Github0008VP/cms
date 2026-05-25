@@ -11,6 +11,7 @@ import CreatePage from "./pages/adminPages/AdminProjectCreate.jsx"
 import Messages from "./pages/adminPages/Messages.jsx";
 
 import AdminLogin from "./components/AdminLogin.jsx";
+import CreateAdmin from "./pages/adminPages/CreateAdmin.jsx";
 
 function App() {
 
@@ -42,6 +43,10 @@ return(
           </ProtectedRoute>
         }
       />
+
+      // adding path for creating admin
+      <Route path="/admin/create-admin" element={<CreateAdmin/>} />
+      
     </Routes>
   </BrowserRouter>
 

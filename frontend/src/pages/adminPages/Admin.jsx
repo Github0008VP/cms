@@ -3,6 +3,7 @@ import ProjectCard from "../../components/ProjectCard";
 import { useNavigate } from "react-router-dom";
 import { deleteProject, getProjects } from "../../services/projectServices";
 import "./Admin.css";
+import Admins from "./Admins";
 
 const Admin = () => {
   const [data, setData] = useState([]);
@@ -48,6 +49,7 @@ const Admin = () => {
 
   return (
     <>
+      <Admins />
       <div className="admin-page">
         <div className="admin-page-header">
           <h1 className="admin-page-title">Admin Dashboard</h1>

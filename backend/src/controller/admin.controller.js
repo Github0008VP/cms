@@ -12,7 +12,7 @@ const login = async (req, res) => {
 
  const {name, email, password} = req.body
 
-    const admin = await Admin.findOne({email})
+    const admin = await Admin.findOne({email}).select('+password')
 
     if(!admin) {
        return res.status(401).json({message: "Invalid Email or Password!!"})        
@@ -161,6 +161,79 @@ const contact = async(req, res) => {
     }
 }
 
+//controller to create multiple admins
+const createAdmin = async (req, res) => {
+
+    try {
+
+        const {name, email, password, role} = req.body;
+    
+        if(!name || !email || !password) {
+            return res.status(400).json({message: "Fill all information"})
+        }
+
+        // checking if email alreday in use
+        const existingAdmin = await Admin.findOne({ email });
+        if (existingAdmin) {
+            return res.status(400).json({
+            success: false,
+            message: "Admin already exists with this email",
+            });
+        }
+    
+        const hashedPassword = await bcrypt.hash(password, 10);
+    
+        const adm = await Admin.create({
+            name,
+            email,
+            password: hashedPassword
+        });
+
+        return res.status(201).json({
+            success: true,
+            message: "Admin Created Succesfully",
+            admin: {
+                id: adm._id,
+                name: adm.name,
+                email: adm.email,
+                role: adm.role,
+            },        
+        });
+        
 
 
-module.exports = {login, createProject, updateProject, deleteProject, contact}
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Failed to create Admin"
+        })
+    }
+
+
+
+}
+
+const getAdmins = async (req, res) => {
+
+    try{
+
+        const admins = await Admin.find();
+        
+        if(!admins) {
+            return res.status(400).json({message: "No Admin Exist"})
+        }
+        res.send(admins)
+
+        res.status(200).json({
+            success: true,
+            message: "Got List of Admins Succesfully!!",
+            admins
+        })
+    }
+    catch(error) {
+
+    }
+}
+
+
+module.exports = {login, createProject, updateProject, deleteProject, contact, createAdmin, getAdmins}
