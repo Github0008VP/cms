@@ -40,6 +40,7 @@ This project was built as a practical full-stack portfolio CMS using React on th
 
 ## Project Structure
 
+```bash
 frontend/
 ├── src/
 │   ├── components/
@@ -57,7 +58,8 @@ frontend/
 backend/
 ├── middleware/
 │   └── auth.middleware.js
-└── 
+└── ...
+```
 
 ## Authentication Flow
 
@@ -92,38 +94,49 @@ This project demonstrates practical full-stack development skills beyond just lo
 
 ### 1. Clone the repository
 
+```bash
 git clone <your-repo-url>
 cd <your-repo-folder>
+```
 
 ### 2. Install dependencies
 
 For frontend:
 
-cd fronted
+```bash
+cd frontend
 npm install
+```
 
 For backend:
 
+```bash
 cd backend
 npm install
-
+```
 
 ### 3. Set environment variables
 
 Create a `.env` file in the backend and add values such as:
 
+```env
 MONGO_URI=your_mongodb_connection_string
 JWTSECRET=your_jwt_secret
+```
 
 For the frontend, configure:
 
+```env
 VITE_API_URL=your_backend_url
+```
 
 ### 4. Run locally
 
 Backend:
 
+```bash
 npm run dev
+```
 
 Frontend:
 
@@ -143,4 +156,4 @@ npm run dev
 ## Author
 
 **Vishavpreet Singh**  
-BTech Computer Science student and MERN stack developer.
+MERN stack developer.
